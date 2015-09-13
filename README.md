@@ -1,5 +1,5 @@
-# build-client
-The bottom up build of build. Implemented with flux and react
+# webpack-redux-react-starter
+A webpack implementation of react with redux
 
 ## Start
 ```
