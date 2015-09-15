@@ -18,4 +18,4 @@ class Main extends Component {
 }
 
 
-React.render(<Main />, document.body);
+export default Main;
