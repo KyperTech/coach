@@ -12,10 +12,11 @@ class Main extends Component {
   }
 
   render() {
+    console.log('props', this.props);
     return (
       <div>
         Parent
-        <ChildComponent currentLocation={ this.props.router.location } />
+        <ChildComponent currentRoute={ this.props.router.location.pathname } />
         <Cars cars={ this.props.cars } onCarAddClick={ car => this.props.addCar(car) } />
       </div>
     )

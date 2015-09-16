@@ -1,11 +1,10 @@
 import React from 'react';
-import { createStore } from 'redux';
+import storeConfig from './store/configureStore';
 import { Provider } from 'react-redux';
 import Main from './components/Main';
 import rootReducer from './reducers';
 
-let store = createStore(rootReducer);
-
+const store = storeConfig();
 let rootElement = document.body;
 React.render(
   // The child must be wrapped in a function
