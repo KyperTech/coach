@@ -15,7 +15,7 @@ class Main extends Component {
     return (
       <div>
         Parent
-        <ChildComponent />
+        <ChildComponent currentLocation={ this.props.router.location } />
         <Cars cars={ this.props.cars } onCarAddClick={ car => this.props.addCar(car) } />
       </div>
     )
@@ -28,7 +28,8 @@ Main.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    cars: state.cars
+    cars: state.cars,
+    router: state.router
   };
 }
 

@@ -4,11 +4,9 @@ import './cars.scss';
 class Cars extends Component {
   constructor() {
     super();
-    this.handleClick.bind(this);
   }
 
   handleClick(e) {
-    console.log('click');
     this.props.onCarAddClick({
       name: 'tesla',
       hp: 400
@@ -22,7 +20,7 @@ class Cars extends Component {
     return (
       <div>
         { cars }
-        <button onClick={ this.handleClick }>Add tesla</button>
+        <button onClick={ this.handleClick.bind(this) }>Add tesla</button>
       </div>
     )
   }
