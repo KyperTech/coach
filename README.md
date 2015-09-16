@@ -1,5 +1,5 @@
 # webpack-redux-react-starter
-A webpack implementation of react with redux
+A webpack implementation of react with redux and react router
 
 ## Start
 ```
