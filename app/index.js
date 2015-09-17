@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux';
+import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 import Main from './components/Main';
 import Routes from './routes';
@@ -8,7 +8,8 @@ import rootReducer from './reducers';
 const initialState = {
   cars: [{name:'hola',hp: 210}]
 }
-let store = createStore(rootReducer, initialState);
+
+const store = configureStore(initialState);
 
 let rootElement = document.body;
 React.render(

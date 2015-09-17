@@ -4,7 +4,7 @@ A webpack implementation of react with redux and react router
 ## Start
 ```
 npm install
-npm run start-dev
+npm run start
 ```
 
 <!-- ## Get dev env setup
