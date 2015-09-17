@@ -1,6 +1,6 @@
 import { ADD_CAR } from '../actions';
 
-export default function cars(state = [{name:'hola',hp: 210}], action) {
+export default function cars(state = [], action) {
   switch (action.type) {
   case ADD_CAR:
     return [...state, action.payload];
