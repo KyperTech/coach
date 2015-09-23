@@ -4,6 +4,9 @@
   "description": "a starting point for webpack with redux and react",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-bundle && npm run build-copy",
+    "build-bundle": "webpack --config webpack-production.config",
+    "build-copy": "cp -a assets/favicon.ico build/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/dev-server"
   },
