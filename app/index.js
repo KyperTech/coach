@@ -9,7 +9,7 @@ const initialState = {
   cars: [{name:'hola', hp: 210}]
 }
 
-const store = configureStore();
+const store = configureStore(initialState);
 
 class Root extends Component {
   render() {

@@ -7,7 +7,6 @@ class ChildComponent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="text">
         Current route: { this.props.currentRoute }

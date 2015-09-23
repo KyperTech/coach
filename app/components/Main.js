@@ -12,7 +12,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log('render main');
     return (
       <div>
         Parent
