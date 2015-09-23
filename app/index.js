@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
-import Main from './components/Main';
-import Routes from './routes';
-import rootReducer from './reducers';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import AppRouter from './routes';
 
 const initialState = {
-  cars: [{name:'hola',hp: 210}]
+  cars: [{name:'hola', hp: 210}]
 }
 
-const store = configureStore(initialState);
+const store = configureStore();
 
-let rootElement = document.body;
-React.render(
-  // The child must be wrapped in a function
-  // to work around an issue in React 0.13.
-  <Provider store={store}>
-    {() => <Routes />}
-  </Provider>,
-  rootElement
+class Root extends Component {
+  render() {
+    return (
+      <div>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+        <DebugPanel top right bottom>
+          <DevTools store={store} monitor={LogMonitor} />
+        </DebugPanel>
+      </div>
+    )
+  }
+}
+
+let rootElement = document.getElementById('root');
+
+ReactDOM.render(
+  <Root />, rootElement
 );

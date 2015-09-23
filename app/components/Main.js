@@ -12,12 +12,12 @@ class Main extends Component {
   }
 
   render() {
+    console.log('render main');
     return (
       <div>
         Parent
         <ChildComponent currentRoute={ this.props.router.location.pathname } />
         <Cars cars={ this.props.cars } onCarAddClick={ car => this.props.addCar(car) } />
-        { this.props.children }
       </div>
     )
   }

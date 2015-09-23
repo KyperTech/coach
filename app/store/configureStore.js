@@ -9,7 +9,6 @@ const createStoreWithMiddleware = compose(
   // Save for redux middleware
   // applyMiddleware(),
   reduxReactRouter({
-    routes,
     createHistory
   }),
   devTools()
