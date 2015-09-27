@@ -1,6 +1,5 @@
 /* eslint-disable no-console, no-use-before-define */
 
-import path from 'path';
 import Express from 'express';
 // import qs from 'qs';
 
@@ -8,17 +7,19 @@ import Express from 'express';
 // import webpackDevMiddleware from 'webpack-dev-middleware';
 // import webpackHotMiddleware from 'webpack-hot-middleware';
 // import webpackConfig from '../webpack.config';
-var config = require('../webpack-production.config');
+import config from '../webpack-production.config';
 
 import React from 'react';
 import { Provider } from 'react-redux';
 
 import configureStore from '../app/store/configureStore';
-import App from '../common/containers/App';
-var renderIndex = require('../lib/render-index');
+// import App from '../common/containers/App';
+import AppRouter from '../app/routes';
+
+// import renderIndex from '../lib/render-index';
+import builtBundle from '../build/bundle-build';
 
 const app = new Express();
-const port = 3000;
 
 // Use this middleware to set up hot module reloading via webpack.
 // const compiler = webpack(webpackConfig);
@@ -29,6 +30,7 @@ const port = 3000;
 app.use(handleRender);
 
 function handleRender(req, res) {
+// console.log('yo----!!', builtBundle);
   // Query our mock API asynchronously
   // fetchCounter(apiResult => {
     // Read the counter from the request, if provided
@@ -44,14 +46,20 @@ function handleRender(req, res) {
     // Render the component to a string
     const html = React.renderToString(
       <Provider store={store}>
-        { () => <App/> }
+        <AppRouter />
       </Provider>);
-
+    //
     // Grab the initial state from our Redux store
     const finalState = store.getState();
 
     // Send the rendered page back to the client
-    res.send(renderIndex({ appData: finalState }));
+    builtBundle((response) => {
+      console.log(response);
+      res.send(renderIndex({
+        appData: finalState,
+        appMarkup: html
+      }));
+    });
   // });
 }
 
@@ -73,10 +81,10 @@ function handleRender(req, res) {
 //     `;
 // }
 
-app.listen(port, (error) => {
+app.listen(config.port, (error) => {
   if (error) {
     console.error(error);
   } else {
-    console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`);
+    console.info(`==> 🌎  Listening on port ${config.port}. Open up http://localhost:${config.port}/ in your browser.`);
   }
 });

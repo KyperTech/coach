@@ -3,7 +3,6 @@ import rootReducer from '../reducers';
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-react-router';
 import { devTools } from 'redux-devtools';
 import createHistory from 'history/lib/createBrowserHistory';
-import routes from '../routes';
 
 const createStoreWithMiddleware = compose(
   // Save for redux middleware

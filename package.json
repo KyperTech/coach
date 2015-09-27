@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build-bundle",
+    "build-bundle": "webpack --stats --progress --config webpack-production.config",
     "start": "node bin/dev-server",
     "production": "node bin/index-server"
   },
