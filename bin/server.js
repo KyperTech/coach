@@ -12,12 +12,12 @@ import config from '../webpack-production.config';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import configureStore from '../app/store/configureStore';
+// import configureStore from '../app/store/configureStore';
 // import App from '../common/containers/App';
-import AppRouter from '../app/routes';
+// import AppRouter from '../app/routes';
 
-// import renderIndex from '../lib/render-index';
-import builtBundle from '../build/bundle-build';
+import renderIndex from '../lib/render-index';
+import Root from '../app/root';
 
 const app = new Express();
 
@@ -39,27 +39,24 @@ function handleRender(req, res) {
 
     // Compile an initial state
     const initialState = { word: 'asdf' };
-
-    // Create a new Redux store instance
+    //
+    // // Create a new Redux store instance
     const store = configureStore(initialState);
-
-    // Render the component to a string
-    const html = React.renderToString(
-      <Provider store={store}>
-        <AppRouter />
-      </Provider>);
+    //
+    // // Render the component to a string
+    // const html = React.renderToString(
+    //   <Provider store={store}>
+    //     <AppRouter />
+    //   </Provider>);
     //
     // Grab the initial state from our Redux store
     const finalState = store.getState();
 
     // Send the rendered page back to the client
-    builtBundle((response) => {
-      console.log(response);
       res.send(renderIndex({
         appData: finalState,
-        appMarkup: html
+        appMarkup: React.renderToString(<Root />)
       }));
-    });
   // });
 }
 
