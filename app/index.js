@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/configureStore';
 import Root from './root';
+import configureStore from './store/configureStore';
 
-const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__ || { word: 'asdf' };
 
 const store = configureStore(initialState);
-
 
 let rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Root />, rootElement
+  <Root store={ store } />, rootElement
 );

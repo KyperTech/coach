@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Provider } from 'react-redux';
-import AppRouter from './routes';
+import AppRouter from './app-router';
 
-import configureStore from './store/configureStore';
 
 class Root extends Component {
   constructor(dev) {
@@ -13,12 +12,12 @@ class Root extends Component {
   render() {
     let panel = this.dev ? (
         <DebugPanel top right bottom>
-          <DevTools store={store} monitor={LogMonitor} />
+          <DevTools store={this.props.store} monitor={LogMonitor} />
         </DebugPanel>
     ) : '';
     return (
       <div>
-        <Provider store={store}>
+        <Provider store={this.props.store}>
           <AppRouter />
         </Provider>
         { panel }
@@ -26,5 +25,9 @@ class Root extends Component {
     )
   }
 }
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
 
 export default Root;

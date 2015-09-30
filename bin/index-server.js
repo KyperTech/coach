@@ -1,4 +1,2 @@
-require('babel/register')({
-  ignore: /..\/app\/root/
-});
+require('babel/register');
 require('./server');
