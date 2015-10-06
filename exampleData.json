@@ -1,0 +1,57 @@
+{
+  "coaches": {
+    "999": {
+      "name": "Bob",
+      "username": "bobguy1",
+      "description": "Best coaching guy around.",
+      "focusAreas":["life", "medetation", "breathing"],
+      "averageRating": 3.2,
+      "rate": "20",
+      "availablility": {},
+      "reviews": ["123"],
+      "createdAt": 1444104410498,
+      "updatedAt": 1444104410498
+    },
+  },
+  "clients": {
+    "888": {
+      "name": "Chris",
+      "username": "chrisman5000",
+      "calendar": {
+        "availabilities": [
+          {
+            "start":1444104410498,
+            "end":1444104410498,
+            "slots": [
+              {
+                "start":1444104410498,
+                "length":30,
+                "booked": false
+              }
+            ]
+          }
+        ]
+      },
+      "reviews": ["123"],
+      "createdAt": 1444104410498,
+      "updatedAt": 1444104410498
+    }
+  },
+  "reviews":{
+    "123": {
+      "text": "Great guy.",
+      "focusArea": "life",
+      "rating": 5,
+      "client": "888",
+      "createdAt": 1444104410498
+    }
+  },
+  "focusAreas": {
+    "life": {
+      "title": "life",
+      "description": "Improve your everyday living with a life coach.",
+      "coaches":["999"]
+    }
+  }
+
+}
