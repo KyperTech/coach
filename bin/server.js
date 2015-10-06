@@ -1,28 +1,38 @@
 /* eslint-disable no-console, no-use-before-define */
 
 var Express = require('express');
+var fs = require('fs');
+var path = require('path');
 
 var config = require('../webpack-production.config');
 
 var renderIndex = require('../lib/render-index');
 var renderApp = require('../build/bundle-server');
 
+var serveStatic = require('serve-static');
+
 var app = new Express();
+
+app.use('/' + config.publicPath, serveStatic(config.output.path, {
+  index: false,
+  setHeaders: function(res) {
+    res.setHeader('Cache-Control', 'max-age=2592000');
+  }
+}));
 
 // This is fired every time the server side receives a request
 app.use(handleRender);
 
+var stats = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'stats.json')));
+
 function handleRender(req, res) {
-  // Query our mock API asynchronously
-  // fetchCounter(apiResult => {
-    // Read the counter from the request, if provided
-    // const params = qs.parse(req.query);
-    // const counter = parseInt(params.counter, 10) || apiResult || 0;
-
-
-    // Send the rendered page back to the client
-      res.send(renderIndex(renderApp()));
-  // });
+  renderApp(function (result) {
+    res.send(renderIndex({
+      hash: stats.hash,
+      appData: result.appData,
+      appMarkup: result.appMarkup
+    }));
+  });
 }
 
 app.listen(config.port, function(error) {

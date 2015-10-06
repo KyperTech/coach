@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build-bundle && npm run build-server",
+    "build": "npm run build-bundle && npm run build-server && npm run build-copy",
     "build-bundle": "webpack --stats --progress --config webpack-production.config",
     "build-server": "webpack --stats --progress --config webpack-server-production.config",
+    "build-copy": "cp -a assets/favicon.ico build/",
     "start": "node bin/dev-server",
     "production": "node bin/server"
   },
@@ -41,13 +42,14 @@
     "react-router": "^1.0.0-rc1",
     "redux": "^3.0.0",
     "redux-router": "^1.0.0-beta3",
+    "redux-thunk": "^1.0.0",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
     "babel-core": "^5.8.22",
     "babel-loader": "^5.3.2",
-     "babel-plugin-react-transform": "^1.0.3",
+    "babel-plugin-react-transform": "^1.0.3",
     "css-loader": "^0.16.0",
     "eslint": "^1.4.1",
     "eslint-config-airbnb": "0.0.8",

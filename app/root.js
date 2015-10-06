@@ -8,6 +8,7 @@ class Root extends Component {
   constructor(dev) {
     super();
     this.dev = dev;
+    this.dev = false;
   }
   render() {
     let panel = this.dev ? (
