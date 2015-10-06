@@ -1,9 +1,13 @@
+@import '../../variables';
+
 .app {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $font-family;
+  font-size: 16px;
+  color: $dark;
 }
 .inputs {
   text-align:center;
-  margin-top:40px;
+  margin-top: 40px;
 }
 .input-group {
   margin-bottom: 1em;
@@ -12,6 +16,10 @@
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+:focus {
+  outline: 0;
 }
 // .brand {
 //   $size: 40px;

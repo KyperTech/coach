@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
-import cars from './cars';
+import coaches from './coaches';
 import auth from './auth';
 
 const rootReducer = combineReducers({
-  cars,
+  coaches,
   auth,
   router: routerStateReducer
 });

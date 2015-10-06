@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.Coach {
+  &-FocusArea {
+   &::after {
+     content: ', ';
+   }
+
+   &:last-of-type {
+     &::after {
+       content: '';
+     }
+   }
+  }
+}

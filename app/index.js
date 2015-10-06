@@ -7,7 +7,10 @@ import AppRouter from './routes';
 import Matter from 'kyper-matter';
 let matter = new Matter('coach');
 const initialState = {
-  cars: [{name:'hola', hp: 210}],
+  coaches: [{
+    name: 'Fred',
+    focusAreas: ['Love', 'Life']
+  }],
   auth: {account: matter.currentUser}
 }
 

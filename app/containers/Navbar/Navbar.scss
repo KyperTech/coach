@@ -1,9 +1,9 @@
-@import '../../components/variables';
+@import '../../variables';
 a {
   text-decoration:none;
 }
 .navbar {
-  background-color: $navbar;
+  background-color: $dark;
   width:100%;
   padding:10px;
   font-size:1.5em;

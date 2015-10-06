@@ -13,7 +13,6 @@ class Main extends Component {
   render() {
     return (
       <div className="app">
-        <Navbar />
         {this.props.children}
       </div>
     )

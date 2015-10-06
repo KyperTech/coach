@@ -1,8 +1,8 @@
-export const ADD_CAR = 'ADD_CAR';
+export const ADD_COACH = 'ADD_COACH';
 
-export function addCar(car) {
+export function addCoach(coach) {
   return {
-    type: ADD_CAR,
-    payload: car
+    type: ADD_COACH,
+    payload: coach 
   };
 }

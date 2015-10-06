@@ -1,0 +1,12 @@
+@import '../../variables';
+
+.Header {
+  height: 100vh;
+  width: 100%;
+  background-color: $primary;
+  &-Title {
+    color: $light;
+    text-align: center;
+    font-size: 2rem;
+  }
+}

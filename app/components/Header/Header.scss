@@ -1,0 +1,27 @@
+@import '../../variables';
+
+.Header {
+  height: 100vh;
+  width: 100%;
+  background-color: $primary;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  &-Title {
+    height: 3rem;
+    color: $light;
+    text-align: center;
+    font-size: 2rem;
+  }
+  &-Input {
+    font-size: 2rem;
+    height: 2.2rem;
+    border: none;
+    border-bottom: 2px solid $light;
+    background-color: transparent;
+    font-family: $font-family;
+    color: $light;
+    padding-bottom: 2px;
+    box-sizing: padding-box;
+  }
+}
