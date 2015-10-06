@@ -54,7 +54,22 @@ export function searchCoaches(query) {
     dispatch(attemptSearch(query));
     return mainRef.child('coaches').orderByKey().on('value', (snap) => {
       console.log('firebase response:', snap.val());
-      return dispatch(receiveSearch(snap.val()));
+      let finalArray = [];
+      snap.forEach((coachSnap) => {
+        let coach = coachSnap.val();
+        console.log('checking coach:', coach);
+        if(!_.has(coach, 'focusAreas')){
+          return;
+        }
+        let matchingAreas = _.filter(coach.focusAreas, (area) => {
+          return area.indexOf(query) !== -1;
+        });
+        console.log('matching areas', matchingAreas);
+        if(matchingAreas.length > 0){
+          finalArray.push(coach);
+        }
+      });
+      return dispatch(receiveSearch(finalArray));
     });
   }
 }
