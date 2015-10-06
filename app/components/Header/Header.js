@@ -25,7 +25,8 @@ class Header extends Component {
     return (
       <div className="Header">
         <span className="Header-Title">Find me a
-        <input className="Header-Input" onChange={this.handleInputChange} onKeyUp={this.handleKeyPress}/> coach</span>
+        <input className="Header-Input" onChange={this.handleInputChange} onKeyUp={this.handleKeyPress}/> 
+        coach</span>
       </div>
     )
   }
