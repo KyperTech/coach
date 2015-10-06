@@ -4,6 +4,7 @@ export const RECIEVE_ADD_COACH = 'ADD_COACH_RES';
 export const ATTEMPT_SEARCH = 'ATTEMPT_SEARCH';
 export const RECIEVE_SEARCH = 'RECIEVE_SEARCH';
 export const COACH_ERR = 'COACH_ERR';
+
 import Firebase from 'firebase';
 
 var mainRef = new Firebase('https://kyper-coach.firebaseIO.com/');
@@ -47,7 +48,7 @@ export function handleError(error) {
 }
 //Requires react-thunk
 export function searchCoaches(query) {
-  console.log('login action called', query);
+  console.log('search coaches action called', query);
   return (dispatch, getState) => {
     console.log('distpatch function running.');
     dispatch(attemptSearch(query));

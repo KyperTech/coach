@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/coach';
 import './Home.scss';
-
+import _ from 'lodash';
 import Header from '../../components/Header/Header';
 import Coaches from '../../components/Coaches/Coaches';
 
@@ -29,8 +29,6 @@ export default class Home extends Component {
 
 //Place state of redux store into props of component
 function mapStateToProps(state) {
-  let coaches = state.coaches ? state.coaches.coaches : null;
-  console.log('state to props:', state);
   return {
     coaches: state.coaches,
     account: state.account,
