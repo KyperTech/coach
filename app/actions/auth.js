@@ -7,7 +7,7 @@ export const LOGOUT_RESPONSE = 'LOGOUT_RESPONSE';
 export const AUTH_ERR = 'AUTH_ERR';
 
 import Matter from 'kyper-matter';
-let matter = new Matter('exampleApp');
+let matter = new Matter('coach');
 
 // Fetches a single user from Github API unless it is cached.
 // Relies on Redux Thunk middleware.

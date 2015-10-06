@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import AppRouter from './routes';
 import Matter from 'kyper-matter';
-let matter = new Matter('exampleApp');
+let matter = new Matter('coach');
 const initialState = {
   cars: [{name:'hola', hp: 210}],
   auth: {account: matter.currentUser}

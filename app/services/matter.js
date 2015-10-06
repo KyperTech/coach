@@ -1,3 +1,3 @@
 import Matter from 'kyper-matter';
-let matter = new Matter('exampleApp');
+let matter = new Matter('coach');
 export default matter;
