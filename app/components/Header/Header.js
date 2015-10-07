@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+
 import './Header.scss';
 
 class Header extends Component {
@@ -25,8 +27,9 @@ class Header extends Component {
     return (
       <div className="Header">
         <span className="Header-Title">Find me a
-        <input className="Header-Input" onChange={this.handleInputChange} onKeyUp={this.handleKeyPress}/> 
+        <input className="Header-Input" onChange={this.handleInputChange} onKeyUp={this.handleKeyPress}/>
         coach</span>
+        <Link className="Header-Link" to="/new">Im a coach</Link>
       </div>
     )
   }
