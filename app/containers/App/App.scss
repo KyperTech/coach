@@ -1,8 +1,11 @@
 @import '../../variables';
 
-.app {
+p, h1, h2, h3, h4, h5, span, div, input, textarea {
   font-family: $font-family;
-  font-size: 16px;
+}
+
+.app {
+  font-size: 20px;
   color: $dark;
 }
 .inputs {
