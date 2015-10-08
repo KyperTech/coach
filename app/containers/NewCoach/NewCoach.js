@@ -24,14 +24,20 @@ class NewCoach extends Component {
     this.previousStep = this.previousStep.bind(this);
     this.state = {step: 1};
   }
-  handleNameChange() {
-
+  handleNameChange(val) {
+    this.setState({
+      name: val
+    });
   }
-  handleTypeChange() {
-
+  handleTypeChange(val) {
+    this.setState({
+      type: val
+    });
   }
-  handleUsernameChange() {
-
+  handleUsernameChange(val) {
+    this.setState({
+      username: val
+    });
   }
   handleKeyPress() {
 
@@ -61,10 +67,10 @@ class NewCoach extends Component {
       case 1:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
-            <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
-            <InputGroup onChange={ this.handleNameChange } label="name" />
-            <InputGroup onChange={this.handleUsernameChange} label="username" />
-            <InputGroup onChange={this.handleTypeChange} label="coach type" />
+            <UploadGroup onDrop={ this.handleImageUpload } label="profile" value={this.state.image}/>
+            <InputGroup onChange={ this.handleNameChange } label="name" value={this.state.name}/>
+            <InputGroup onChange={this.handleUsernameChange} label="username" value={this.state.username} />
+            <InputGroup onChange={this.handleTypeChange} label="coach type" value={this.state.type}/>
           </WizardForm>
         )
       case 2:
@@ -78,7 +84,7 @@ class NewCoach extends Component {
       case 3:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
-            <TextGroup label="description of your services" />
+            <TextGroup label="description of your services" value={this.state.description}/>
           </WizardForm>
         )
       default:
