@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import './NewCoach.scss';
 
+import InputGroup from '../InputGroup/InputGroup';
+
 class NewCoach extends Component {
 
   constructor(props) {
@@ -30,12 +32,9 @@ class NewCoach extends Component {
         <div className="NewCoach-Form">
           <span className="NewCoach-Label">PROFILE</span>
           <img className="NewCoach-Image" src="http://placehold.it/100X100" />
-          <span className="NewCoach-Label">NAME</span>
-          <input className="NewCoach-Input" onChange={this.handleNameChange}/>
-          <span className="NewCoach-Label">USERNAME</span>
-          <input className="NewCoach-Input" onChange={this.handleUsernameChange}/>
-          <span className="NewCoach-Label">COACH TYPE</span>
-          <input className="NewCoach-Input" onChange={this.handleTypeChange} onKeyUp={this.handleKeyPress}/>
+          <InputGroup onChange={ this.handleNameChange } label="name" />
+          <InputGroup onChange={this.handleUsernameChange} label="username" />
+          <InputGroup onChange={this.handleTypeChange} label="coach type" />
         </div>
         <button className="NewCoach-Submit" onClick={this.handleSubmit}>-></button>
       </div>
