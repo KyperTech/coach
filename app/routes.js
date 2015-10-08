@@ -36,8 +36,6 @@ export default class AppRouter extends Component {
           <Route path="about" component={ About } />
           <Route path="profile" component={ Profile } />
           <Route path="new" component={ NewCoach } />
-          <Route path="new/info" component={ NewCoachInfo } />
-          <Route path="new/desc" component={ NewCoachDesc } />
           <Route path="*" component={ NotFound } />
         </Route>
       </ReduxRouter>

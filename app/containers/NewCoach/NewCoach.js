@@ -20,7 +20,8 @@ class NewCoach extends Component {
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
-    this.nextClick = this.nextClick.bind(this);
+    this.nextStep = this.nextStep.bind(this);
+    this.previousStep = this.previousStep.bind(this);
     this.state = {step: 1};
   }
   handleNameChange() {
@@ -38,10 +39,18 @@ class NewCoach extends Component {
   handleImageUpload(image) {
 
   }
-  nextClick() {
-    console.log('nextClick called');
+  nextStep() {
+    console.log('nextStep called');
     this.state.step ++;
-    console.log('step incremented by 1', this.state);
+    console.log('stepped forward 1', this.state);
+    this.setState({
+      step: this.state.step
+    });
+  }
+  previousStep() {
+    console.log('previousStep called');
+    this.state.step --;
+    console.log('stepped back 1', this.state);
     this.setState({
       step: this.state.step
     });
@@ -51,7 +60,7 @@ class NewCoach extends Component {
     switch(this.state.step) {
       case 1:
         return (
-          <WizardForm onNextClick={ this.nextClick }>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
             <InputGroup onChange={ this.handleNameChange } label="name" />
             <InputGroup onChange={this.handleUsernameChange} label="username" />
@@ -60,7 +69,7 @@ class NewCoach extends Component {
         )
       case 2:
         return (
-          <WizardForm onNextClick={ this.nextClick }>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
             <InputGroup onChange={this.handleTypeChange} label="date of birth" />
             <SelectGroup label="i'm available for" />
             <AvailabilityGroup label="availability"/>
@@ -68,13 +77,13 @@ class NewCoach extends Component {
         )
       case 3:
         return (
-          <WizardForm onNextClick={ this.nextClick }>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
             <TextGroup label="description of your services" />
           </WizardForm>
         )
       default:
         return (
-          <WizardForm onNextClick={ this.nextClick }>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
             <InputGroup onChange={ this.handleNameChange } label="name" />
             <InputGroup onChange={this.handleUsernameChange} label="username" />
