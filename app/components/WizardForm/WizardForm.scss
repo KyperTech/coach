@@ -1,0 +1,58 @@
+@import '../../variables';
+$buttonHeight: 3rem;
+$buttonWidth: 3rem;
+$buttonPadding: 1rem;
+$tileHeight: 25rem;
+$tileWidth: 15rem;
+
+.WizardForm {
+  // Positiong
+  // Display & Box
+  display: flex;
+  width: 100%;
+  vertical-align: middle;
+  height:100vh;
+  background-color: $primary;
+  display:flex;
+  flex-direction: row;
+  // Text
+  justify-content: center;
+  align-content: center;
+  align-items:center;
+  &-Tile {
+    // Positiong
+    padding: 2rem;
+    margin-left: $buttonWidth + $buttonPadding; //Keep Tile centered
+    // Display & Box
+    height: $tileHeight;
+    width: $tileWidth;
+    border-radius: 1.5rem;
+    display:flex;
+    // Color
+    background-color: $light;
+    // Text
+    font-size:1rem;
+  }
+  &-Submit {
+    // Positiong
+    margin-left: $buttonPadding;
+    // Display & Box
+    height: $buttonWidth;
+    width: $buttonWidth;
+    border: none;
+    // Color
+    background-color: $primary;
+    color: $light;
+    // Text
+    align-content: center;
+    vertical-align: middle;
+    font-size:2rem;
+  }
+  &-Submit:hover {
+    //Display & Box
+    border-radius: 1rem;
+    //Color
+    background-color: $light;
+    color: $primary;
+  }
+}

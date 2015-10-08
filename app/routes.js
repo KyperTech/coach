@@ -21,7 +21,7 @@ import Signup from './containers/Signup/Signup.js';
 import RequireLogin from './containers/RequireLogin/RequireLogin.js';
 import LoginSuccess from './containers/LoginSuccess/LoginSuccess.js';
 import NotFound from './containers/NotFound/NotFound.js';
-import NewCoach from './components/NewCoach/NewCoach';
+import WizardForm from './components/WizardForm/WizardForm';
 
 export default class AppRouter extends Component {
   render() {
@@ -33,7 +33,7 @@ export default class AppRouter extends Component {
           <Route path="signup" component={ Signup }/>
           <Route path="about" component={ About } />
           <Route path="profile" component={ Profile } />
-          <Route path="new" component={ NewCoach } />
+          <Route path="new" component={ WizardForm } />
           <Route path="*" component={ NotFound } />
         </Route>
       </ReduxRouter>
