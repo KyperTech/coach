@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-
-import './WizardForm.scss';
-
 import Arrow from '../icons/Arrow';
-
+import './WizardForm.scss';
+import styles from './WizardForm'
 class WizardForm extends Component {
 
   constructor(props) {
@@ -13,6 +11,7 @@ class WizardForm extends Component {
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleNameChange() {
 
@@ -25,6 +24,10 @@ class WizardForm extends Component {
   }
   handleKeyPress() {
 
+  }
+  handleSubmit() {
+    console.log('handle submit called');
+    this.props.onNextClick();
   }
   render() {
     return (
@@ -40,6 +43,6 @@ class WizardForm extends Component {
   }
 }
 WizardForm.propTypes = {
-
+  onNextClick: PropTypes.func.isRequired
 }
 export default WizardForm;

@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import * as Actions from '../../actions';
 
 // import './NewCoach.scss';
 
 import InputGroup from '../../components/InputGroup/InputGroup';
-import UploadGroup from '../../components/UploadGroup/UploadGroup';
+import SelectGroup from '../../components/SelectGroup/SelectGroup';
 import WizardForm from '../../components/WizardForm/WizardForm';
 
-class NewCoach extends Component {
+class NewCoachInfo extends Component {
 
   constructor(props) {
     super(props);
@@ -34,20 +37,30 @@ class NewCoach extends Component {
   }
   nextClick() {
     console.log('next this:', this);
-    window.location.assign('/new/info');
+    window.location.assign('/login');
   }
   render() {
     return (
       <WizardForm onNextClick={ this.nextClick }>
-        <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
-        <InputGroup onChange={ this.handleNameChange } label="name" />
-        <InputGroup onChange={this.handleUsernameChange} label="username" />
-        <InputGroup onChange={this.handleTypeChange} label="coach type" />
+        <InputGroup onChange={this.handleTypeChange} label="date of birth" />
+        <SelectGroup label="i'm available for" />
+        <InputGroup onChange={this.handleTypeChange} label="availability" />
       </WizardForm>
     )
   }
 }
-NewCoach.propTypes = {
+NewCoachInfo.propTypes = {
 
 }
-export default NewCoach;
+//Place state of redux store into props of component
+function mapStateToProps(state) {
+  return {
+    router: state.router
+  };
+}
+//Place action methods into props
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCoachInfo);
