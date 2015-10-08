@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Arrow from '../icons/Arrow';
 import './WizardForm.scss';
-import styles from './WizardForm'
+
 class WizardForm extends Component {
 
   constructor(props) {
@@ -30,7 +30,6 @@ class WizardForm extends Component {
   }
 }
 WizardForm.propTypes = {
-  onNextClick: PropTypes.func.isRequired,
-  style: PropTypes.obj
+  onNextClick: PropTypes.func.isRequired
 }
 export default WizardForm;
