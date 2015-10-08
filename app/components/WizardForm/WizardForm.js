@@ -7,20 +7,7 @@ class WizardForm extends Component {
 
   constructor(props) {
     super(props);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleNameChange() {
-
-  }
-  handleTypeChange() {
-
-  }
-  handleUsernameChange() {
-
   }
   handleKeyPress() {
 
@@ -43,6 +30,7 @@ class WizardForm extends Component {
   }
 }
 WizardForm.propTypes = {
-  onNextClick: PropTypes.func.isRequired
+  onNextClick: PropTypes.func.isRequired,
+  style: PropTypes.obj
 }
 export default WizardForm;

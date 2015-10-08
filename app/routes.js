@@ -23,6 +23,7 @@ import LoginSuccess from './containers/LoginSuccess/LoginSuccess';
 import NotFound from './containers/NotFound/NotFound';
 import NewCoach from './containers/NewCoach/NewCoach';
 import NewCoachInfo from './containers/NewCoachInfo/NewCoachInfo';
+import NewCoachDesc from './containers/NewCoachDesc/NewCoachDesc';
 
 export default class AppRouter extends Component {
   render() {
@@ -36,6 +37,7 @@ export default class AppRouter extends Component {
           <Route path="profile" component={ Profile } />
           <Route path="new" component={ NewCoach } />
           <Route path="new/info" component={ NewCoachInfo } />
+          <Route path="new/desc" component={ NewCoachDesc } />
           <Route path="*" component={ NotFound } />
         </Route>
       </ReduxRouter>

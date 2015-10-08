@@ -12,7 +12,6 @@ class UploadGroup extends Component {
 
   handleDrop(files) {
     console.log(files);
-
   }
 
   render() {

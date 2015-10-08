@@ -9,6 +9,7 @@ import * as Actions from '../../actions';
 import InputGroup from '../../components/InputGroup/InputGroup';
 import SelectGroup from '../../components/SelectGroup/SelectGroup';
 import WizardForm from '../../components/WizardForm/WizardForm';
+import AvailabilityGroup from '../../components/AvailabilityGroup/AvailabilityGroup';
 
 class NewCoachInfo extends Component {
 
@@ -37,14 +38,14 @@ class NewCoachInfo extends Component {
   }
   nextClick() {
     console.log('next this:', this);
-    window.location.assign('/login');
+    window.location.assign('/new/desc');
   }
   render() {
     return (
       <WizardForm onNextClick={ this.nextClick }>
         <InputGroup onChange={this.handleTypeChange} label="date of birth" />
         <SelectGroup label="i'm available for" />
-        <InputGroup onChange={this.handleTypeChange} label="availability" />
+        <AvailabilityGroup label="availability"/>
       </WizardForm>
     )
   }

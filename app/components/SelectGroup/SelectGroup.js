@@ -17,9 +17,9 @@ class SelectGroup extends Component {
       <div className="SelectGroup">
         <span className="SelectGroup-Label">{ this.props.label }</span>
         <div className="SelectGroup-Buttons">
-          <button className="SelectGroup-Button">1</button>
-          <button className="SelectGroup-Button">2</button>
-          <button className="SelectGroup-Button">3</button>
+          <button className="SelectGroup-Button">Video</button>
+          <button className="SelectGroup-Button">Phone</button>
+          <button className="SelectGroup-Button">Chat</button>
         </div>
       </div>
     )
