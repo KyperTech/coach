@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import './NewCoach.scss';
 
 import InputGroup from '../InputGroup/InputGroup';
+import UploadGroup from '../UploadGroup/UploadGroup';
 
 class NewCoach extends Component {
 
@@ -13,6 +14,7 @@ class NewCoach extends Component {
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
   handleNameChange() {
 
@@ -26,12 +28,14 @@ class NewCoach extends Component {
   handleKeyPress() {
 
   }
+  handleImageUpload(image) {
+
+  }
   render() {
     return (
       <div className="NewCoach">
         <div className="NewCoach-Form">
-          <span className="NewCoach-Label">PROFILE</span>
-          <img className="NewCoach-Image" src="http://placehold.it/100X100" />
+          <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
           <InputGroup onChange={ this.handleNameChange } label="name" />
           <InputGroup onChange={this.handleUsernameChange} label="username" />
           <InputGroup onChange={this.handleTypeChange} label="coach type" />
