@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import './NewCoach.scss';
+// import './NewCoach.scss';
 
-import InputGroup from '../InputGroup/InputGroup';
-import UploadGroup from '../UploadGroup/UploadGroup';
-import WizardForm from '../WizardForm/WizardForm';
+import InputGroup from '../../components/InputGroup/InputGroup';
+import UploadGroup from '../../components/UploadGroup/UploadGroup';
+import WizardForm from '../../components/WizardForm/WizardForm';
 
 class NewCoach extends Component {
 

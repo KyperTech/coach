@@ -28,6 +28,7 @@ class WizardForm extends Component {
     return (
       <div className="WizardForm">
         <div className="WizardForm-Tile">
+          { this.props.children }
         </div>
         <button className="WizardForm-Submit" onClick={this.handleSubmit}>-></button>
       </div>

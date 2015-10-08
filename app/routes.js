@@ -12,16 +12,16 @@ import { ReduxRouter } from 'redux-router';
 //     LoginSuccess,
 //     NotFound,
 //   } from 'containers';
-import App from './containers/App/App.js';
-import Home from './containers/Home/Home.js';
-import About from './containers/About/About.js';
-import Profile from './containers/Profile/Profile.js';
-import Login from './containers/Login/Login.js';
-import Signup from './containers/Signup/Signup.js';
-import RequireLogin from './containers/RequireLogin/RequireLogin.js';
-import LoginSuccess from './containers/LoginSuccess/LoginSuccess.js';
-import NotFound from './containers/NotFound/NotFound.js';
-import WizardForm from './components/WizardForm/WizardForm';
+import App from './containers/App/App';
+import Home from './containers/Home/Home';
+import About from './containers/About/About';
+import Profile from './containers/Profile/Profile';
+import Login from './containers/Login/Login';
+import Signup from './containers/Signup/Signup';
+import RequireLogin from './containers/RequireLogin/RequireLogin';
+import LoginSuccess from './containers/LoginSuccess/LoginSuccess';
+import NotFound from './containers/NotFound/NotFound';
+import NewCoach from './containers/NewCoach/NewCoach';
 
 export default class AppRouter extends Component {
   render() {
@@ -33,7 +33,7 @@ export default class AppRouter extends Component {
           <Route path="signup" component={ Signup }/>
           <Route path="about" component={ About } />
           <Route path="profile" component={ Profile } />
-          <Route path="new" component={ WizardForm } />
+          <Route path="new" component={ NewCoach } />
           <Route path="*" component={ NotFound } />
         </Route>
       </ReduxRouter>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class InputGroup extends Component {
+class Arrow extends Component {
 
   constructor(props) {
     super(props);
@@ -11,4 +11,4 @@ class InputGroup extends Component {
     )
   }
 }
-export default InputGroup;
+export default Arrow;
