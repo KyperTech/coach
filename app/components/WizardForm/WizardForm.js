@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import './WizardForm.scss';
 
+import Arrow from '../icons/Arrow';
+
 class WizardForm extends Component {
 
   constructor(props) {
@@ -30,7 +32,9 @@ class WizardForm extends Component {
         <div className="WizardForm-Tile">
           { this.props.children }
         </div>
-        <button className="WizardForm-Submit" onClick={this.handleSubmit}>-></button>
+        <button className="WizardForm-Submit" onClick={this.handleSubmit}>
+          <Arrow style="light" />
+        </button>
       </div>
     )
   }
