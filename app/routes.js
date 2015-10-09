@@ -22,8 +22,6 @@ import RequireLogin from './containers/RequireLogin/RequireLogin';
 import LoginSuccess from './containers/LoginSuccess/LoginSuccess';
 import NotFound from './containers/NotFound/NotFound';
 import NewCoach from './containers/NewCoach/NewCoach';
-import NewCoachInfo from './containers/NewCoachInfo/NewCoachInfo';
-import NewCoachDesc from './containers/NewCoachDesc/NewCoachDesc';
 
 export default class AppRouter extends Component {
   render() {
