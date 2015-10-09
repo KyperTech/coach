@@ -3,43 +3,41 @@ import React, { Component, PropTypes } from 'react';
 import './AvailabilityGroup.scss';
 
 import TimeSlider from '../TimeSlider/TimeSlider';
+import DayPicker from '../DayPicker/DayPicker';
+import Plus from '../icons/Plus';
 
-let selectedDates = [];
-let dates = [
-  {text: 'Mon', value: 'monday'},
-  {text: 'Tues', value: 'tuesday'},
-  {text: 'Wed', value: 'wednesday'},
-  {text: 'Thurs', value: 'thursday'},
-  {text: 'Fri', value: 'friday'},
-  {text: 'Sat', value: 'saturday'},
-  {text: 'Sun', value: 'sunday'}
-];
 class AvailabilityGroup extends Component {
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDayChange = this.handleDayChange.bind(this);
     this.selectDate = this.selectDate.bind(this);
   }
+
   handleChange(e) {
     console.log(e.target.value);
     this.props.onChange(e.target.value);
   }
+
+  handleDayChange(days) {
+    console.log(days);
+  }
+
   selectDate(index) {
     console.log('index selected:', index);
   }
+
   render() {
-    let datesList = dates.map((date, ind) => {
-      return (<a className="AvailabilityGroup-Date" key={ind}>{date.text}</a>);
-    });
     return (
       <div className="AvailabilityGroup">
         <span className="AvailabilityGroup-Label">
           { this.props.label }
         </span>
         <TimeSlider />
-        <div className="AvailabilityGroup-Dates">
-          { datesList }
+        <DayPicker onChange={ this.handleDayChange } />
+        <div className="AvailabilityGroup-Plus">
+          <Plus />
         </div>
       </div>
     )

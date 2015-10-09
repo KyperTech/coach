@@ -8,6 +8,7 @@ class Arrow extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     let classes = classnames('Icons', {
       light: this.props.style === 'light',
@@ -59,9 +60,13 @@ class Arrow extends Component {
   }
 }
 
-Arrow.PropTypes = {
+Arrow.propTypes = {
   style: PropTypes.string,
   direction: PropTypes.string
+}
+
+Arrow.defaultProps = {
+  style: 'dark'
 }
 
 export default Arrow;

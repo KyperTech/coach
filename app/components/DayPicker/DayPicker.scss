@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.DayPicker {
+  display: flex;
+  justify-content: space-around;
+
+  &-Date{
+    font-size:.7rem;
+    cursor: pointer;
+
+    &.selected {
+      color: $secondary;
+    }
+  }
+}
