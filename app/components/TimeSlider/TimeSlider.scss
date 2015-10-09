@@ -1,0 +1,45 @@
+@import '../../variables';
+
+.TimeSlider {
+  height: 20px;
+  margin-bottom: 40px;
+
+  .noUi-handle {
+    box-shadow: none;
+  }
+
+  .noUi-connect {
+    background: $secondary;
+    box-shadow: none;
+  }
+
+  .noUi-background {
+    background: $light;
+  }
+
+  .noUi-handle {
+    border-radius: 0;
+    background-color: $grey;
+    border: 0;
+
+    &:before {
+      display: none;
+    }
+    &:after {
+      display: none;
+    }
+  }
+
+  &-Timeline {
+    border-radius: 0;
+    border-color: $dark;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-Times {
+    font-size: .8rem;
+    width: 100%;
+    text-align: center;
+  }
+}

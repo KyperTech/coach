@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
 import './AvailabilityGroup.scss';
+
+import TimeSlider from '../TimeSlider/TimeSlider';
+
 let selectedDates = [];
 let dates = [
   {text: 'Mon', value: 'monday'},
@@ -34,9 +37,7 @@ class AvailabilityGroup extends Component {
         <span className="AvailabilityGroup-Label">
           { this.props.label }
         </span>
-        <div className="AvailabilityGroup-Timeline">
-          __________________________
-        </div>
+        <TimeSlider />
         <div className="AvailabilityGroup-Dates">
           { datesList }
         </div>
