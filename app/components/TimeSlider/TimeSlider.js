@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import noUiSlider from 'nouislider';
+import moment from 'moment';
 
 import 'nouislider/distribute/nouislider.min.css';
 import './TimeSlider.scss';
@@ -18,8 +19,10 @@ class TimeSlider extends Component {
 
 
   componentDidMount() {
+    let startTime = moment(this.props.timeRange[0], ['h a']).format('H');
+    let endTime = moment(this.props.timeRange[1], ['h a']).format('H');
     noUiSlider.create(this._slider, {
-      start: [ 9, 16 ], // Handle start position
+      start: [ startTime, endTime ], // Handle start position
     	step: 1, // Slider moves in increments of '10'
     	margin: 1, // Handles must be more than '20' apart
     	connect: true, // Display a colored bar between the handles
@@ -31,30 +34,29 @@ class TimeSlider extends Component {
     		'max': 24
     	}
     });
+
     this._slider.noUiSlider.on('update', (values, handle) => {
       var value = Math.round(values[handle]);
-      var formattedTime;
-
-      if (value === 0 || value === 24) {
-        formattedTime = '12 am';
-      } else if (value === 12) {
-        formattedTime = '12 pm';
-      } else if (value > 12) {
-        formattedTime = `${value - 12} pm`;
-      } else {
-        formattedTime = `${value} am`;
-      }
+      var formattedTime = moment(value, ['H']).format('h a');
 
       if ( handle ) {
         this.setState({
           end: formattedTime
+        }, () => {
+          this.updateParent();
         });
       } else {
         this.setState({
           start: formattedTime
+        }, () => {
+          this.updateParent();
         });
       }
     })
+  }
+
+  updateParent() {
+    this.props.onChange([this.state.start, this.state.end]);
   }
 
   componentWillUnmount() {
@@ -73,5 +75,7 @@ class TimeSlider extends Component {
   }
 }
 TimeSlider.propTypes = {
+  timeRange: PropTypes.array,
+  onChange: PropTypes.func
 }
 export default TimeSlider;

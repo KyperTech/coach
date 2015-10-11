@@ -10,7 +10,6 @@ class AvailabilityGroup extends Component {
 
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
     this.selectDate = this.selectDate.bind(this);
     this.handlePlusClick = this.handlePlusClick.bind(this);
@@ -23,13 +22,12 @@ class AvailabilityGroup extends Component {
     }
   }
 
-  handleChange(e) {
-    console.log(e.target.value);
-    this.props.onChange(e.target.value);
+  handleDayChange(i, days) {
+    console.log(days);
   }
 
-  handleDayChange(days) {
-    console.log(days);
+  handleTimeChange(i, times) {
+    console.log(times);
   }
 
   selectDate(index) {
@@ -51,8 +49,8 @@ class AvailabilityGroup extends Component {
     let groups = this.state.groups.map((group, i) => {
       return (
         <div key={ i } className="AvailabilityGroup-Group">
-          <TimeSlider />
-          <DayPicker onChange={ this.handleDayChange } />
+          <TimeSlider timeRange={ group.timeRange } onChange={ this.handleTimeChange.bind(this, i) }/>
+          <DayPicker selectedDays={ group.days } onChange={ this.handleDayChange.bind(this, i) } />
         </div>
       );
     });

@@ -33,6 +33,7 @@
     "history": "^1.9.1",
     "kyper-matter": "^0.1.1",
     "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "nouislider": "leongersen/noUiSlider",
     "proxy-middleware": "^0.13.1",
     "react": "^0.14.0",
