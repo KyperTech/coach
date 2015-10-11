@@ -13,6 +13,14 @@ class AvailabilityGroup extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
     this.selectDate = this.selectDate.bind(this);
+    this.handlePlusClick = this.handlePlusClick.bind(this);
+
+    this.state = {
+      groups: [{
+        timeRange: ['9 am', '4 pm'],
+        days: ['monday', 'friday']
+      }]
+    }
   }
 
   handleChange(e) {
@@ -28,16 +36,37 @@ class AvailabilityGroup extends Component {
     console.log('index selected:', index);
   }
 
+  handlePlusClick() {
+    this.setState((previousState) => {
+      previousState.groups.push({
+        timeRange: ['9 am', '4 pm'],
+        days: []
+      });
+      return previousState;
+    });
+
+  }
+
   render() {
+    let groups = this.state.groups.map((group, i) => {
+      return (
+        <div key={ i } className="AvailabilityGroup-Group">
+          <TimeSlider />
+          <DayPicker onChange={ this.handleDayChange } />
+        </div>
+      );
+    });
+
     return (
       <div className="AvailabilityGroup">
         <span className="AvailabilityGroup-Label">
           { this.props.label }
         </span>
-        <TimeSlider />
-        <DayPicker onChange={ this.handleDayChange } />
+        { groups }
         <div className="AvailabilityGroup-Plus">
-          <Plus />
+          <a href="#" onClick={ this.handlePlusClick }>
+            <Plus />
+          </a>
         </div>
       </div>
     )

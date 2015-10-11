@@ -37,6 +37,7 @@ class NewCoach extends Component {
 
   }
   handleImageUpload(image) {
+    console.log(image);
 
   }
   nextStep() {
