@@ -1,6 +1,6 @@
 @import '../../variables';
 $buttonHeight: 3rem;
-$buttonWidth: 3rem;
+$buttonWidth: 4rem;
 $buttonPadding: 1rem;
 $tileHeight: 25rem;
 $tileWidth: 15rem;
@@ -22,7 +22,6 @@ $tileWidth: 15rem;
   &-Tile {
     // Positiong
     padding: 2rem;
-    margin-left: $buttonWidth + $buttonPadding; //Keep Tile centered
     // Display & Box
     max-height: $tileHeight;
     min-width: $tileWidth;
@@ -37,6 +36,7 @@ $tileWidth: 15rem;
   &-Submit {
     // Positiong
     margin-left: $buttonPadding;
+    margin-right: $buttonPadding;
     // Display & Box
     height: $buttonWidth;
     width: $buttonWidth;
@@ -48,5 +48,10 @@ $tileWidth: 15rem;
     align-content: center;
     vertical-align: middle;
     font-size:2rem;
+
+    &:first-of-type {
+      height: $buttonWidth / 1.5;
+      width: $buttonWidth / 1.5;
+    }
   }
 }

@@ -66,7 +66,7 @@ class NewCoach extends Component {
     switch(this.state.step) {
       case 1:
         return (
-          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} start={ true } >
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
             <InputGroup onChange={ this.handleNameChange } label="name" />
             <InputGroup onChange={this.handleUsernameChange} label="username" />
@@ -83,13 +83,13 @@ class NewCoach extends Component {
         )
       case 3:
         return (
-          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} end={ true }>
             <TextGroup label="description of your services" />
           </WizardForm>
         )
       default:
         return (
-          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} >
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
             <InputGroup onChange={ this.handleNameChange } label="name" />
             <InputGroup onChange={this.handleUsernameChange} label="username" />

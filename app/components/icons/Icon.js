@@ -13,7 +13,8 @@ class Icon extends Component {
     let classes = classnames('Icons', {
       light: this.props.style === 'light',
       dark: this.props.style === 'dark',
-      secondary: this.props.style === 'secondary' || this.props.selected
+      secondary: this.props.style === 'secondary' || this.props.selected,
+      hide: !this.props.show
     });
     return (
       <div className={ classes }>
@@ -25,11 +26,13 @@ class Icon extends Component {
 
 Icon.propTypes = {
   style: PropTypes.string,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  show: PropTypes.bool
 }
 
 Icon.defaultProps = {
-  style: 'dark'
+  style: 'dark',
+  show: true
 }
 
 export default Icon;
