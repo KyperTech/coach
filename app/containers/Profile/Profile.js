@@ -12,7 +12,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="homepage">
-        <h2>Profile Page</h2>
+        <h2>{ this.props.profile.name }</h2>
         <button onClick={this.logout}>Logout</button>
       </div>
     )
@@ -21,7 +21,7 @@ class Profile extends Component {
 //Place state of redux store into props of component
 function mapStateToProps(state) {
   return {
-    account: state.account,
+    profile: state.profile,
     router: state.router
   };
 }

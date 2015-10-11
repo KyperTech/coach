@@ -38,8 +38,8 @@ $tileWidth: 15rem;
     margin-left: $buttonPadding;
     margin-right: $buttonPadding;
     // Display & Box
-    height: $buttonWidth;
-    width: $buttonWidth;
+    height: $buttonWidth / 1.5;
+    width: $buttonWidth / 1.5;
     border: none;
     // Color
     background-color: $primary;
@@ -49,9 +49,9 @@ $tileWidth: 15rem;
     vertical-align: middle;
     font-size:2rem;
 
-    &:first-of-type {
-      height: $buttonWidth / 1.5;
-      width: $buttonWidth / 1.5;
+    &:last-of-type {
+      height: $buttonWidth;
+      width: $buttonWidth;
     }
   }
 }

@@ -27,24 +27,35 @@ class WizardForm extends Component {
     this.props.onNextClick();
   }
   render() {
-    return (
-      <div className="WizardForm">
+    let submit = this.props.end ? (
+        <Link to={`/${this.props.linkTo}`} className="WizardForm-Submit">
+          <Icon style="selected">
+            <Check />
+          </Icon>
+        </Link>
+    ) : (
+        <button className="WizardForm-Submit" onClick={this.handleSubmit}>
+          <Icon style="light">
+            <Arrow direction="right"/>
+          </Icon>
+        </button>
+    );
+
+    let previous = this.props.start ? '' : (
         <button className="WizardForm-Submit" onClick={this.handlePrevious}>
           <Icon style="light" show={ !this.props.start }>
             <Arrow direction="left"/>
           </Icon>
         </button>
+    );
+
+    return (
+      <div className="WizardForm">
+        { previous }
         <div className="WizardForm-Tile">
           { this.props.children }
         </div>
-        <button className="WizardForm-Submit" onClick={this.handleSubmit}>
-          <Icon style="light" show={ !this.props.end }>
-            <Arrow direction="right"/>
-          </Icon>
-          <Icon style="selected" show={ this.props.end }>
-            <Check />
-          </Icon>
-        </button>
+        { submit }
       </div>
     )
   }
@@ -54,12 +65,14 @@ WizardForm.propTypes = {
   onNextClick: PropTypes.func.isRequired,
   onPrevClick: PropTypes.func,
   start: PropTypes.bool,
-  end: PropTypes.bool
+  end: PropTypes.bool,
+  linkTo: PropTypes.string
 }
 
 WizardForm.defaultProps = {
   start: false,
-  end: false
+  end: false,
+  linkTo: ''
 }
 
 export default WizardForm;

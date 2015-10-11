@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as Actions from '../../actions/auth';
+import * as Profile from '../../actions/profile';
 // import './NewCoach.scss';
 
 import InputGroup from '../../components/InputGroup/InputGroup';
@@ -14,11 +14,7 @@ class NewCoach extends Component {
 
   constructor(props) {
     super(props);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
-    this.handleAvailabilityChange = this.handleAvailabilityChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.nextStep = this.nextStep.bind(this);
@@ -26,33 +22,9 @@ class NewCoach extends Component {
     this.state = {step: 1};
   }
 
-  handleNameChange() {
-
-  }
-
-  handleTypeChange() {
-
-  }
-
-  handleUsernameChange() {
-
-  }
-
-  handleKeyPress() {
-
-  }
-
   handleImageUpload(image) {
     console.log(image);
 
-  }
-
-  handleCommMethodChange(methods) {
-    console.log(methods);
-  }
-
-  handleAvailabilityChange(availabilities) {
-    console.log('avail', availabilities);
   }
 
   handleEmailChange(email) {
@@ -60,6 +32,7 @@ class NewCoach extends Component {
   }
 
   handlePasswordChange(password) {
+    console.log('password');
 
   }
 
@@ -86,29 +59,29 @@ class NewCoach extends Component {
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} start={ true } >
             <InputGroup onChange={ this.handleEmailChange } label="email" />
-            <InputGroup onChange={this.handlePasswordChange} label="password" type="password" />
+            <InputGroup onChange={ this.handlePasswordChange } label="password" type="password" />
           </WizardForm>
         )
       case 2:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}  >
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
-            <InputGroup onChange={ this.handleNameChange } label="name" />
-            <InputGroup onChange={this.handleTypeChange} label="coach type" />
+            <InputGroup onChange={ this.props.updateName } label="name" />
+            <InputGroup onChange={this.props.updateFocusAreas } label="focus area" />
           </WizardForm>
         )
       case 3:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
-            <InputGroup onChange={this.handleTypeChange} label="date of birth" type="date" />
-            <SelectGroup label="i'm available for" onChange={ this.handleCommMethodChange } />
-            <AvailabilityGroup label="availability" onChange={ this.handleAvailabilityChange } />
+            <InputGroup onChange={this.props.updateDOB } label="date of birth" type="date" />
+            <SelectGroup label="i'm available for" onChange={ this.props.updateContactMethods } />
+            <AvailabilityGroup label="availability" onChange={ this.props.updateAvailability } />
           </WizardForm>
         )
       case 4:
         return (
-          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} end={ true }>
-            <TextGroup label="description of your services" />
+          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} end={ true } linkTo='profile'>
+            <TextGroup label="description of your services" onChange={ this.props.updateServiceDescription } />
           </WizardForm>
         )
       default:
@@ -127,12 +100,13 @@ NewCoach.propTypes = {
 //Place state of redux store into props of component
 function mapStateToProps(state) {
   return {
-    account: state.account
+    account: state.account,
+    profile: state.profile
   };
 }
 //Place action methods into props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators(Profile, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCoach);

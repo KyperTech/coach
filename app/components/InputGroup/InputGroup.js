@@ -9,7 +9,6 @@ class InputGroup extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    console.log(e.target.value);
     this.props.onChange(e.target.value);
   }
   render() {
