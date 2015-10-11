@@ -15,10 +15,15 @@ class WizardForm extends Component {
   }
   handlePrevious() {
     console.log('handle previous called');
-    this.props.onPrevClick();
+    if (!this.props.start) {
+      this.props.onPrevClick();
+    }
   }
   handleSubmit() {
     console.log('handle submit called');
+    if (this.props.end) {
+
+    }
     this.props.onNextClick();
   }
   render() {
@@ -44,10 +49,17 @@ class WizardForm extends Component {
     )
   }
 }
+
 WizardForm.propTypes = {
   onNextClick: PropTypes.func.isRequired,
   onPrevClick: PropTypes.func,
   start: PropTypes.bool,
   end: PropTypes.bool
 }
+
+WizardForm.defaultProps = {
+  start: false,
+  end: false
+}
+
 export default WizardForm;
