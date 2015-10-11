@@ -24,8 +24,8 @@ $tileWidth: 15rem;
     padding: 2rem;
     margin-left: $buttonWidth + $buttonPadding; //Keep Tile centered
     // Display & Box
-    height: $tileHeight;
-    width: $tileWidth;
+    max-height: $tileHeight;
+    min-width: $tileWidth;
     border-radius: 1.5rem;
     // Color
     background-color: $light;

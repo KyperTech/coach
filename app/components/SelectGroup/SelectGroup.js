@@ -2,24 +2,53 @@ import React, { Component, PropTypes } from 'react';
 
 import './SelectGroup.scss';
 
+import _ from 'lodash';
+
+import Icon from '../icons/Icon';
+import CameraIcon from '../icons/Camera';
+import PhoneIcon from '../icons/Phone';
+import ChatIcon from '../icons/Chat';
+
 class SelectGroup extends Component {
 
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      video: false,
+      phone: false,
+      chat: false
+    };
   }
-  handleChange(e) {
-    console.log(e.target.value);
-    this.props.onChange(e.target.value);
+
+  handleClick(button) {
+    this.setState((previousState) => {
+      previousState[button] = !previousState[button];
+      return previousState;
+    }, () => {
+      this.props.onChange(_.keys(_.pick(this.state, _.identity)));
+    })
   }
+
   render() {
     return (
       <div className="SelectGroup">
         <span className="SelectGroup-Label">{ this.props.label }</span>
         <div className="SelectGroup-Buttons">
-          <button className="SelectGroup-Button">Video</button>
-          <button className="SelectGroup-Button">Phone</button>
-          <button className="SelectGroup-Button">Chat</button>
+          <button className="SelectGroup-Button" onClick={ this.handleClick.bind(this, 'video') }>
+            <Icon selected={ this.state.video }>
+              <CameraIcon />
+            </Icon>
+          </button>
+          <button className="SelectGroup-Button" onClick={ this.handleClick.bind(this, 'phone') }>
+            <Icon selected={ this.state.phone }>
+              <PhoneIcon />
+            </Icon>
+          </button>
+          <button className="SelectGroup-Button" onClick={ this.handleClick.bind(this, 'chat') }>
+            <Icon selected={ this.state.chat }>
+              <ChatIcon />
+            </Icon>
+          </button>
         </div>
       </div>
     )

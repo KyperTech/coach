@@ -16,9 +16,13 @@
     }
   }
 
-  &.primary {
+  &.secondary {
     * {
-      stroke: $primary;
+      stroke: $secondary;
+    }
+
+    path, ellipse, rect {
+      fill: $secondary;
     }
   }
 }

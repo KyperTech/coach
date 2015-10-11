@@ -20,6 +20,9 @@
   &-Buttons {
     margin-bottom: 2rem;
     display: flex;
-    justify-content: center;
+  }
+  &-Button {
+    border: 0;
+    background-color: transparent;
   }
 }

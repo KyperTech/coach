@@ -40,6 +40,11 @@ class NewCoach extends Component {
     console.log(image);
 
   }
+
+  handleCommMethodChange(methods) {
+    console.log(methods);
+  }
+
   nextStep() {
     console.log('nextStep called');
     this.state.step ++;
@@ -71,8 +76,8 @@ class NewCoach extends Component {
       case 2:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
-            <InputGroup onChange={this.handleTypeChange} label="date of birth" />
-            <SelectGroup label="i'm available for" />
+            <InputGroup onChange={this.handleTypeChange} label="date of birth" type="date" />
+            <SelectGroup label="i'm available for" onChange={ this.handleCommMethodChange } />
             <AvailabilityGroup label="availability"/>
           </WizardForm>
         )

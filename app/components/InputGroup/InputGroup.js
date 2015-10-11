@@ -16,13 +16,14 @@ class InputGroup extends Component {
     return (
       <div className="InputGroup">
         <span className="InputGroup-Label">{ this.props.label }</span>
-        <input className="InputGroup-Input" onChange={this.handleChange}/>
+        <input className="InputGroup-Input" onChange={this.handleChange} type={ this.props.type || 'text' } />
       </div>
     )
   }
 }
 InputGroup.propTypes = {
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  type: PropTypes.string
 }
 export default InputGroup;
