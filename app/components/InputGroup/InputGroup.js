@@ -16,7 +16,7 @@ class InputGroup extends Component {
     return (
       <div className="InputGroup">
         <span className="InputGroup-Label">{ this.props.label }</span>
-        <input className="InputGroup-Input" onChange={this.handleChange} value={this.props.value}/>
+        <input className="InputGroup-Input" onChange={this.handleChange} type={ this.props.type || 'text' } />
       </div>
     )
   }
@@ -24,6 +24,6 @@ class InputGroup extends Component {
 InputGroup.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  value: PropTypes.string
+  type: PropTypes.string
 }
 export default InputGroup;

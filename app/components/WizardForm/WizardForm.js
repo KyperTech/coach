@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Arrow from '../icons/Arrow';
 import './WizardForm.scss';
+
+import Icon from '../icons/Icon';
+import Arrow from '../icons/Arrow';
+import Check from '../icons/Check';
 
 class WizardForm extends Component {
 
@@ -12,30 +15,51 @@ class WizardForm extends Component {
   }
   handlePrevious() {
     console.log('handle previous called');
-    this.props.onPrevClick();
+    if (!this.props.start) {
+      this.props.onPrevClick();
+    }
   }
   handleSubmit() {
     console.log('handle submit called');
+    if (this.props.end) {
+
+    }
     this.props.onNextClick();
   }
   render() {
     return (
       <div className="WizardForm">
         <button className="WizardForm-Submit" onClick={this.handlePrevious}>
-          <Arrow style="light" direction="left"/>
+          <Icon style="light" show={ !this.props.start }>
+            <Arrow direction="left"/>
+          </Icon>
         </button>
         <div className="WizardForm-Tile">
           { this.props.children }
         </div>
         <button className="WizardForm-Submit" onClick={this.handleSubmit}>
-          <Arrow style="light" direction="right"/>
+          <Icon style="light" show={ !this.props.end }>
+            <Arrow direction="right"/>
+          </Icon>
+          <Icon style="selected" show={ this.props.end }>
+            <Check />
+          </Icon>
         </button>
       </div>
     )
   }
 }
+
 WizardForm.propTypes = {
   onNextClick: PropTypes.func.isRequired,
-  onPrevClick: PropTypes.func
+  onPrevClick: PropTypes.func,
+  start: PropTypes.bool,
+  end: PropTypes.bool
 }
+
+WizardForm.defaultProps = {
+  start: false,
+  end: false
+}
+
 export default WizardForm;

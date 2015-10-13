@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-// import './TextGroup.scss';
+import './TextGroup.scss';
+
 class TextGroup extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class TextGroup extends Component {
     return (
       <div className="TextGroup">
         <span className="InputGroup-Label">{ this.props.label }</span>
-        <textarea rows="10" cols="30" autofocus placeholder="" onChange={this.handleChange}/>
+        <textarea className="TextGroup-Textarea" rows="10" cols="40" autofocus placeholder="" onChange={this.handleChange}/>
       </div>
     )
   }
