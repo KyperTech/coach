@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import './InputGroup.scss';
 
+import uniqueId from 'lodash/utility/uniqueId'
+
 class InputGroup extends Component {
 
   constructor(props) {
@@ -15,7 +17,7 @@ class InputGroup extends Component {
     return (
       <div className="InputGroup">
         <span className="InputGroup-Label">{ this.props.label }</span>
-        <input className="InputGroup-Input" onChange={this.handleChange} type={ this.props.type || 'text' } />
+        <input key={ uniqueId() } className="InputGroup-Input" onChange={this.handleChange} type={ this.props.type || 'text' } />
       </div>
     )
   }
