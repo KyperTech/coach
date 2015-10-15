@@ -10,32 +10,30 @@ import SelectGroup from '../../components/SelectGroup/SelectGroup';
 import AvailabilityGroup from '../../components/AvailabilityGroup/AvailabilityGroup';
 import WizardForm from '../../components/WizardForm/WizardForm';
 import TextGroup from '../../components/TextGroup/TextGroup';
+
 class NewCoach extends Component {
 
   constructor(props) {
     super(props);
     this.handleImageUpload = this.handleImageUpload.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.nextStep = this.nextStep.bind(this);
     this.previousStep = this.previousStep.bind(this);
     this.state = {step: 1};
   }
 
   handleImageUpload(image) {
-    console.log(image);
-
+    console.log('Image upload:', image);
+    this.setState({
+      image: image
+    });
   }
-
-  handleEmailChange(email) {
-
+  handleInputChange(fieldName, event, value) {
+    //TODO: Look into if password should be stored outside of state
+    this.setState({
+      [fieldName]: value
+    });
   }
-
-  handlePasswordChange(password) {
-    console.log('password');
-
-  }
-
   nextStep() {
     console.log('nextStep called');
     this.state.step ++;
@@ -52,43 +50,47 @@ class NewCoach extends Component {
       step: this.state.step
     });
   }
+  finalStep() {
+    //TODO: Call new coach with data
+    // this.props.
+  }
   render() {
     console.log('this.state:', this.state);
     switch(this.state.step) {
       case 1:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} start={ true } >
-            <InputGroup onChange={ this.handleEmailChange } label="email" />
-            <InputGroup onChange={ this.handlePasswordChange } label="password" type="password" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'email') } label="email" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'password') } label="password" type="password" />
           </WizardForm>
         )
       case 2:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}  >
             <UploadGroup onDrop={ this.handleImageUpload } label="profile" />
-            <InputGroup onChange={ this.props.updateName } label="name" />
-            <InputGroup onChange={this.props.updateFocusAreas } label="focus area" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'name') } label="name" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'focusArea') } label="focus area" />
           </WizardForm>
         )
       case 3:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep}>
-            <InputGroup onChange={this.props.updateDOB } label="date of birth" type="date" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'DOB') } label="date of birth" type="date" />
             <SelectGroup label="i'm available for" onChange={ this.props.updateContactMethods } />
             <AvailabilityGroup label="availability" onChange={ this.props.updateAvailability } />
           </WizardForm>
         )
       case 4:
         return (
-          <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} end={ true } linkTo='profile'>
-            <TextGroup label="description of your services" onChange={ this.props.updateServiceDescription } />
+          <WizardForm onNextClick={ this.finalStep } onPrevClick={this.previousStep} end={ true } linkTo='profile'>
+            <InputGroup type="textarea" label="description of your services" onChange={ this.handleInputChange.bind(null, 'description') } />
           </WizardForm>
         )
       default:
         return (
           <WizardForm onNextClick={ this.nextStep } onPrevClick={this.previousStep} start={ true } >
-            <InputGroup onChange={ this.handleEmailChange } label="email" />
-            <InputGroup onChange={this.handlePasswordChange} label="password" type="password" />
+            <InputGroup onChange={ this.handleInputChange.bind(null, 'email') } label="email" />
+            <InputGroup onChange={this.handleInputChange.bind(null, 'password')} label="password" type="password" />
           </WizardForm>
         )
     }

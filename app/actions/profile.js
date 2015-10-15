@@ -54,7 +54,14 @@ export function updateServiceDescription(description) {
     payload: description
   }
 }
-
+export function loadProfile(login, requiredFields = []) {
+  return (dispatch, getState) => {
+    const user = getState().account;
+    if (user) {
+      return null;
+    }
+  };
+}
 // export function signup(signupData) {
 //   return dispatch => {
 //     distpatch(attemptSignup(signupData));

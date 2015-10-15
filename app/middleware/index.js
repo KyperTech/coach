@@ -3,6 +3,17 @@ import { camelizeKeys } from 'humps';
 
 const API_ROOT = 'https://api.github.com/';
 const FB_URL = 'https://kyper-coach.firebaseio.com';
+// Fetches an API response and normalizes the result JSON according to schema.
+// This makes every API response have the same shape, regardless of how nested it was.
+function callApi(endpoint, schema) {
+  const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
+
+  import Firebase from 'firebase';
+
+  let mainRef = new Firebase('https://kyper-coach.firebaseIO.com/');
+  let coachesRef = mainRef.child('coaches');
+
+}
 
 // We use this Normalizr schemas to transform API responses from a nested form
 // to a flat form where repos and users are placed in `entities`, and nested
@@ -12,24 +23,14 @@ const FB_URL = 'https://kyper-coach.firebaseio.com';
 
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
-const userSchema = new Schema('users', {
+const coachSchema = new Schema('coaches', {
   idAttribute: 'login'
-});
-
-const repoSchema = new Schema('repos', {
-  idAttribute: 'fullName'
-});
-
-repoSchema.define({
-  owner: userSchema
 });
 
 // Schemas for Github API responses.
 export const Schemas = {
-  USER: userSchema,
-  USER_ARRAY: arrayOf(userSchema),
-  REPO: repoSchema,
-  REPO_ARRAY: arrayOf(repoSchema)
+  COACH: coachSchema,
+  COACH_ARRAY: arrayOf(coachSchema)
 };
 
 // Action key that carries API call info interpreted by this Redux middleware.
