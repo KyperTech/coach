@@ -15,9 +15,9 @@ class InputGroup extends Component {
    * @function handleChange
    * @description Run the onChange function if it exists
    */
-  handleChange(e) {
+  handleChange(event) {
     event.preventDefault();
-    const value = this.value;
+    const value = event.target.value;
     if (this.props.onChange) {
       this.props.onChange(event, value);
     }
@@ -54,9 +54,7 @@ class InputGroup extends Component {
 
   }
 }
-InputGroup.defaultProps = {
-  type: 'text',
-};
+
 InputGroup.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
