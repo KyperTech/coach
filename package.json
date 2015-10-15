@@ -33,7 +33,7 @@
     "babel": "^5.8.21",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.8.2",
-    "history": "^1.9.1",
+    "history": "^1.12.5",
     "proxy-middleware": "^0.13.1",
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",

@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import Root from './root';
 import configureStore from './store/configureStore';
 
+import { reduxReactRouter } from 'redux-router';
+import createHistory from 'history/lib/createBrowserHistory';
+
 const initialState = window.__INITIAL_STATE__ || {
   cars: [{name:'hola', hp: 210}]
 };
 
-const store = configureStore(initialState);
+const store = configureStore(initialState, reduxReactRouter, createHistory);
 
 let rootElement = document.getElementById('root');
 

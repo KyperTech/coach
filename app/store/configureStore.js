@@ -3,16 +3,14 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import routes from '../routes';
 
-import { reduxReactRouter } from 'redux-router/server';
-
-const createStoreWithMiddleware = compose(
-  applyMiddleware(thunk),
-  reduxReactRouter({
-    routes
-  })
-)(createStore);
-
-export default function configureStore(initialState) {
+export default function configureStore(initialState, reduxReactRouter, createHistory) {
+  const createStoreWithMiddleware = compose(
+    applyMiddleware(thunk),
+    reduxReactRouter({
+      routes,
+      createHistory
+    })
+  )(createStore);
   const store = createStoreWithMiddleware(rootReducer, initialState);
 
   if (module.hot) {
