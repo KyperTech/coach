@@ -18,6 +18,7 @@ class NewCoach extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.nextStep = this.nextStep.bind(this);
     this.previousStep = this.previousStep.bind(this);
+    this.finalStep = this.finalStep.bind(this);
     this.state = {step: 1, signupData:{}};
   }
 
@@ -27,12 +28,16 @@ class NewCoach extends Component {
     //   image: image
     // });
   }
+
   handleInputChange(fieldName, event, value) {
     //TODO: Look into if password should be stored outside of state
     if(value){
       this.state.signupData[fieldName] = value;
     }
     // console.log(`${fieldName} value:`, this.state.signupData[fieldName]);
+  }
+  updateAvailabilityChange(val) {
+    console.log('availability changed:', val);
   }
   nextStep() {
     this.state.step ++;
@@ -50,7 +55,7 @@ class NewCoach extends Component {
   }
   finalStep() {
     //TODO: Call new coach with data
-    // this.props.
+    this.props.addCoach(this.state.signupData);
   }
   render() {
     switch(this.state.step) {

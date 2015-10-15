@@ -25,7 +25,9 @@ class SelectGroup extends Component {
       previousState[button] = !previousState[button];
       return previousState;
     }, () => {
-      this.props.onChange(_.keys(_.pick(this.state, _.identity)));
+      if(this.props && this.props.onChange){
+        this.props.onChange(_.keys(_.pick(this.state, _.identity)));
+      }
     })
   }
 

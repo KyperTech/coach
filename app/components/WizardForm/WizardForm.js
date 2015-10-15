@@ -14,13 +14,11 @@ class WizardForm extends Component {
     this.handlePrevious = this.handlePrevious.bind(this);
   }
   handlePrevious() {
-    console.log('handle previous called');
     if (!this.props.start) {
       this.props.onPrevClick();
     }
   }
   handleSubmit() {
-    console.log('handle submit called');
     if (this.props.end) {
 
     }
@@ -28,11 +26,16 @@ class WizardForm extends Component {
   }
   render() {
     let submit = this.props.end ? (
-        <Link to={`/${this.props.linkTo}`} className="WizardForm-Submit">
+        // <Link to={`/${this.props.linkTo}`} className="WizardForm-Submit">
+        //   <Icon style="selected">
+        //     <Check />
+        //   </Icon>
+        // </Link>
+        <button className="WizardForm-Submit" onClick={this.handleSubmit}>
           <Icon style="selected">
             <Check />
           </Icon>
-        </Link>
+        </button>
     ) : (
         <button className="WizardForm-Submit" onClick={this.handleSubmit}>
           <Icon style="light">
