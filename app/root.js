@@ -11,7 +11,6 @@ class Root extends Component {
   render() {
     return (
       <div>
-        <h1>Hello</h1>
         <Provider store={this.props.store}>
           <AppRouter />
         </Provider>

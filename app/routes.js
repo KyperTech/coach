@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 import App from './containers/App/App';
 import Home from './containers/Home/Home';
 import About from './containers/About/About';
