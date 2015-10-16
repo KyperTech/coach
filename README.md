@@ -19,5 +19,12 @@ Coach is built using the following:
 git clone git@github.com:KyperTech/coach.git
 cd coach
 npm install
-npm run start
+npm start
+```
+
+## Production
+
+```bash
+npm run build
+npm run production
 ```
