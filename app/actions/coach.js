@@ -5,7 +5,7 @@ export const ATTEMPT_SEARCH = 'ATTEMPT_SEARCH';
 export const RECIEVE_SEARCH = 'RECIEVE_SEARCH';
 export const COACH_ERR = 'COACH_ERR';
 
-import Firebase from 'firebase';
+import Firebase from 'firebase/lib/firebase-web';
 
 var mainRef = new Firebase('https://kyper-coach.firebaseIO.com/');
 var coachesRef = mainRef.child('coaches');
