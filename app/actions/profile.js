@@ -6,6 +6,10 @@ export const UPDATE_CONTACT_METHODS = 'UPDATE_CONTACT_METHODS';
 export const UPDATE_AVAILABILITY = 'UPDATE_AVAILABILITY';
 export const UPDATE_SERVICE_DESCRIPTION = 'UPDATE_SERVICE_DESCRIPTION';
 
+import logger from '../helpers/logger';
+import Matter from 'kyper-matter';
+let matter = new Matter('exampleApp');
+
 export function updateProfileImage(image) {
   return {
     type: UPDATE_PROFILE_IMAGE,
@@ -62,14 +66,75 @@ export function loadProfile(login, requiredFields = []) {
     }
   };
 }
-// export function signup(signupData) {
-//   return dispatch => {
-//     distpatch(attemptSignup(signupData));
-//     return matter.signup(action.payload)
-//     .then((loginRes) => {
-//       dispatch(receiveSignup(signupData, loginRes));
-//     }, (err) => {
-//       return {type: AUTH_ERR, payload: err};
-//     });
-//   }
-// }
+export function signup(signupData) {
+  logger.log({
+    description: 'Login response.',
+    response: loginRes,
+    func: 'signup',
+    obj: 'ProfileAction'
+  });
+  return dispatch => {
+    distpatch(attemptSignup(signupData));
+    logger.log({
+      description: 'Signup action called.',
+      data: signupData,
+      func: 'signup',
+      obj: 'ProfileAction'
+    });
+    return matter.signup(action.payload)
+    .then((signupRes) => {
+      logger.log({
+        description: 'Signup successful.',
+        response: signupRes,
+        func: 'signup',
+        obj: 'ProfileAction'
+      });
+      dispatch(receiveSignup(signupData, loginRes));
+    }, (err) => {
+      return {type: AUTH_ERR, payload: err};
+    });
+  }
+}
+export function attemptLogin(loginData) {
+ return {
+   type: LOGIN_ATTEMPT,
+   payload: loginData
+ };
+}
+//Requires react-thunk
+export function login(loginData) {
+  logger.log({
+    description: 'login action called',
+    loginData: loginData,
+    func: 'login',
+    obj: 'ProfileAction'
+  });
+  return (dispatch, getState) => {
+    dispatch(attemptLogin(loginData));
+    return matter.login(loginData)
+    .then(loginRes => {
+      logger.log({
+        description: 'Login response.',
+        response: loginRes,
+        func: 'login',
+        obj: 'ProfileAction'
+      });
+      return dispatch(receiveLogin(loginData, loginRes));
+    });
+  }
+}
+export function receiveLogin(loginData, res) {
+  logger.log({
+    description: 'Receive login called.',
+    data: loginData,
+    response: res,
+    func: 'receive',
+    obj: 'ProfileAction'
+  });
+ return {
+   type: LOGIN_RESPONSE,
+   loginData: loginData,
+   account: res,
+   receivedAt: Date.now()
+ };
+}
