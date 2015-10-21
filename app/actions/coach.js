@@ -4,9 +4,7 @@ export const RECEIVE_ADD_COACH = 'RECEIVE_ADD_COACH';
 export const RECEIVE_SEARCH = 'RECEIVE_SEARCH';
 export const COACH_ERR = 'COACH_ERR';
 
-import Firebase from 'firebase';
-
-var mainRef = new Firebase('https://kyper-coach.firebaseIO.com/');
+import mainRef from '../helpers/firebaseClient';
 var coachesRef = mainRef.child('coaches');
 
 export function attemptAddCoach(coach) {
