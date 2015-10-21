@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import * as Actions from '../../actions/coach';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { pushState } from 'redux-router';
+import * as Actions from '../../actions/profile';
 // import './NewCoach.scss';
 
 import InputGroup from '../../components/InputGroup/InputGroup';
@@ -20,6 +21,13 @@ class NewCoach extends Component {
     this.previousStep = this.previousStep.bind(this);
     this.finalStep = this.finalStep.bind(this);
     this.state = {step: 1, signupData:{}};
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('new props', nextProps);
+    if (nextProps.profileCreated) {
+      window.location = '/profile';
+    }
   }
 
   handleImageUpload(image) {
@@ -92,13 +100,13 @@ class NewCoach extends Component {
   }
 }
 NewCoach.propTypes = {
-
+  profile: PropTypes.object
 }
 //Place state of redux store into props of component
 function mapStateToProps(state) {
   return {
-    account: state.account,
     profile: state.profile,
+    profileCreated: state.profileCreated,
     signupData: state.signupData
   };
 }

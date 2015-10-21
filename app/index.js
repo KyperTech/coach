@@ -7,7 +7,6 @@ import AppRouter from './routes';
 import Matter from 'kyper-matter';
 let matter = new Matter('coach');
 const initialState = {
-  coaches: [],
   auth: {account: matter.currentUser}
 }
 
