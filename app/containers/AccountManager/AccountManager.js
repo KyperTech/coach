@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import * as Actions from '../../actions/coach';
 import { Link } from 'react-router';
 import AccountDropdown from '../AccountDropdown/AccountDropdown';
-import * as Actions from '../../actions';
 
 class AccountManager extends Component {
   constructor(props) {
@@ -26,4 +26,15 @@ AccountManager.propTypes = {
   currentAccount: PropTypes.object
 }
 
-export default AccountManager;
+//Place state of redux store into props of component
+function mapStateToProps(state) {
+  return {
+    loginData: state.loginData
+  };
+}
+//Place action methods into props
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountManager);
