@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as Actions from '../../actions/coach';
+import * as Actions from '../../actions/profile';
 // import './NewCoach.scss';
 
 import InputGroup from '../../components/InputGroup/InputGroup';
