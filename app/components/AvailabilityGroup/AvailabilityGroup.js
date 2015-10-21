@@ -11,6 +11,7 @@ class AvailabilityGroup extends Component {
   constructor(props) {
     super(props);
     this.handleDayChange = this.handleDayChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handlePlusClick = this.handlePlusClick.bind(this);
 
     this.state = {
@@ -26,7 +27,9 @@ class AvailabilityGroup extends Component {
       previousState.groups[i].days = days;
       return previousState;
     }, () => {
-      this.props.onChange(this.state.groups);
+      if(this.props && this.props.onChange){
+        this.props.onChange(this.state.groups);
+      }
     });
   }
 
@@ -35,7 +38,9 @@ class AvailabilityGroup extends Component {
       previousState.groups[i].timeRange = times;
       return previousState;
     }, () => {
-      this.props.onChange(this.state.groups);
+      if(this.props && this.props.onChange){
+        this.props.onChange(this.state.groups);
+      }
     });
   }
 
@@ -47,7 +52,6 @@ class AvailabilityGroup extends Component {
       });
       return previousState;
     });
-
   }
 
   render() {
