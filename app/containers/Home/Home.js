@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../../actions/coach';
+import * as Actions from '../../actions/search';
 import './Home.scss';
 import _ from 'lodash';
 import Header from '../../components/Header/Header';

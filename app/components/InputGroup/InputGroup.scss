@@ -11,6 +11,11 @@
     border-bottom: 2px solid $dark;
     margin-bottom: 1.5rem;
   }
+  &-Textarea {
+    border: 2px solid $dark;
+    background-color: transparent;
+    font-size: 1rem;
+  }
   &-Label {
     display: block;
     text-transform: uppercase;

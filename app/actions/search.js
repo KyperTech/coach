@@ -1,39 +1,7 @@
-export const ATTEMPT_ADD_COACH = 'ATTEMPT_ADD_COACH';
-export const ADD_COACH = 'ADD_COACH';
-export const RECIEVE_ADD_COACH = 'ADD_COACH_RES';
 export const ATTEMPT_SEARCH = 'ATTEMPT_SEARCH';
-export const RECIEVE_SEARCH = 'RECIEVE_SEARCH';
+export const RECEIVE_SEARCH = 'RECEIVE_SEARCH';
 export const COACH_ERR = 'COACH_ERR';
 
-import Firebase from 'firebase';
-
-var mainRef = new Firebase('https://kyper-coach.firebaseIO.com/');
-var coachesRef = mainRef.child('coaches');
-
-export function attemptAddCoach(coach) {
-  return {
-    type: ATTEMPT_ADD_COACH,
-    payload: coach
-  };
-}
-export function addCoach(coach) {
-  return (dispatch, getState) => {
-    dispatch(attemptAddCoach(coach));
-    console.log('distpatch function running.');
-    return coachesRef.child(coach.name).set(coach, (err) => {
-      if(err){
-        return dispatch(handleError(err));
-      }
-      return distpatch(receiveAdd(coach));
-    });
-  }
-}
-export function receiveAdd(coach) {
-  return {
-    type: RECEIVE_ADD_COACH,
-    payload: coach
-  }
-}
 export function attemptSearch(query) {
   return {
     type: ATTEMPT_SEARCH,
@@ -76,7 +44,7 @@ export function searchCoaches(query) {
 export function receiveSearch(searchRes) {
   console.log('receive search called', searchRes);
   return {
-     type: RECIEVE_SEARCH,
+     type: RECEIVE_SEARCH,
      payload: searchRes,
      receivedAt: Date.now()
    };
