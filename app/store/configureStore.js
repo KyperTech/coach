@@ -11,8 +11,7 @@ const createStoreWithMiddleware = compose(
   applyMiddleware(thunkMiddleware),
   reduxReactRouter({
     createHistory
-  }),
-  devTools()
+  })
 )(createStore);
 
 export default function configureStore(initialState) {
