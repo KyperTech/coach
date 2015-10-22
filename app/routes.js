@@ -18,8 +18,6 @@ import About from './containers/About/About';
 import Profile from './containers/Profile/Profile';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
-import RequireLogin from './containers/RequireLogin/RequireLogin';
-import LoginSuccess from './containers/LoginSuccess/LoginSuccess';
 import NotFound from './containers/NotFound/NotFound';
 import NewCoach from './containers/NewCoach/NewCoach';
 import TimeSlider from './components/TimeSlider/TimeSlider';

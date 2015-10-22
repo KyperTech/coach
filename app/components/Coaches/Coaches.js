@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import './Coaches.scss';
-
+import {isArray} from 'lodash';
 import Coach from '../Coach/Coach';
 
 class Coaches extends Component {
@@ -12,9 +12,12 @@ class Coaches extends Component {
   }
 
   render() {
-    let coaches = this.props.coaches.map((coach, i) => {
-      return <Coach key={ i } name={ coach.name } focusAreas={ coach.focusAreas } />
-    })
+    let coaches;
+    if(this.props.coaches && isArray(this.props.coaches)){
+      coaches = this.props.coaches.map((coach, i) => {
+        return <Coach key={ i } name={ coach.name } focusAreas={ coach.focusAreas } />
+      });
+    }
     return (
       <div>
         { coaches }

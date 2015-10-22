@@ -23,7 +23,6 @@ export function profile(state = {
   serviceDescription: '',
   created: false
 }, action) {
-  console.log('action', action);
   switch (action.type) {
     case UPDATE_PROFILE_IMAGE:
       state.profileImage = action.payload;

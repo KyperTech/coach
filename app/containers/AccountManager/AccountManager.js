@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as Actions from '../../actions/coach';
 import { Link } from 'react-router';
-import AccountDropdown from '../AccountDropdown/AccountDropdown';
+import AccountDropdown from '../../components/AccountDropdown/AccountDropdown';
 
 class AccountManager extends Component {
   constructor(props) {
