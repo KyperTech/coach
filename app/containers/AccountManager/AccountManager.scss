@@ -1,0 +1,14 @@
+@import '../../variables';
+
+.AccountManager {
+  background-color:$light;
+  padding:.4rem;
+  padding-right:1rem;
+  padding-left:1rem;
+  vertical-align: middle;
+  &-Label {
+    text-decoration: none;
+    color: black;
+    font-size:1rem;
+  }
+}

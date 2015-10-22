@@ -6,6 +6,8 @@ import './Home.scss';
 import _ from 'lodash';
 import Header from '../../components/Header/Header';
 import Coaches from '../../components/Coaches/Coaches';
+import AccountManager from '../AccountManager/AccountManager';
+import Navbar from '../Navbar/Navbar';
 
 export default class Home extends Component {
   constructor(props) {
@@ -19,7 +21,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <Header onSearchSubmit={ this.searchCoaches}/>
+        <Header onSearchSubmit={ this.searchCoaches }/>
+        <Navbar currentAccount={ this.props.account } />
         <Coaches coaches={ this.props.coaches } />
       </div>
     )
@@ -29,7 +32,6 @@ export default class Home extends Component {
 //Place state of redux store into props of component
 function mapStateToProps(state) {
   return {
-    coaches: state.coaches,
     account: state.account,
     coaches: state.coaches
   };

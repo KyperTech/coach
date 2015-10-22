@@ -1,0 +1,34 @@
+@import '../../variables';
+
+.Navbar {
+  background-color:white;
+  width:100%;
+  padding:10px;
+  box-sizing: border-box;
+  font-size:1.5rem;
+  /* Flexbox */
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  &-Brand {
+    text-decoration: none;
+    color:$primary;
+    font-size:1em;
+    &:hover {
+      color:$secondary;
+    }
+  }
+  &-Spacer {
+    text-decoration: none;
+    color: black;
+    flex:1;
+    align-self:flex-end;
+  }
+  &-Actions {
+    text-decoration: none;
+    color: black;
+    align-self:flex-end;
+  }
+}
