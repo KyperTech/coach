@@ -5,6 +5,40 @@ export const UPDATE_DATE_OF_BIRTH = 'UPDATE_DATE_OF_BIRTH';
 export const UPDATE_CONTACT_METHODS = 'UPDATE_CONTACT_METHODS';
 export const UPDATE_AVAILABILITY = 'UPDATE_AVAILABILITY';
 export const UPDATE_SERVICE_DESCRIPTION = 'UPDATE_SERVICE_DESCRIPTION';
+export const ATTEMPT_ADD_COACH = 'ATTEMPT_ADD_COACH';
+export const RECEIVE_ADD_COACH = 'RECEIVE_ADD_COACH';
+
+import mainRef from '../helpers/firebaseClient';
+var coachesRef = mainRef.child('coaches');
+
+export function attemptAddCoach(coach) {
+  console.log('AttemptAddCoach');
+  return {
+    type: ATTEMPT_ADD_COACH,
+    payload: coach
+  };
+}
+
+export function addCoach(coach) {
+  return (dispatch, getState) => {
+    dispatch(attemptAddCoach(coach));
+    console.log('distpatch function running.');
+    return coachesRef.child(coach.name).set(coach, (err) => {
+      if(err){
+        return dispatch(handleError(err));
+      }
+      console.log('coach successfully added to firebase', coach);
+      return dispatch(receiveAdd(coach));
+    });
+  }
+}
+
+export function receiveAdd(coach) {
+  return {
+    type: RECEIVE_ADD_COACH,
+    payload: coach
+  }
+}
 
 import logger from '../helpers/logger';
 import Matter from 'kyper-matter';
