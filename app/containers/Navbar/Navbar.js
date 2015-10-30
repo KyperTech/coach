@@ -15,14 +15,14 @@ class Navbar extends Component {
 
   render() {
     // console.log('current account', this.props.account);
+    let managerIsOpen = false;
     return (
       <div className="Navbar">
         <Link className="Navbar-Brand" to="/">Coach</Link>
         <div className="Navbar-Spacer"></div>
         <div className="Navbar-Actions">
-          <AccountManager currentAccount={ this.props.account } />
+          <AccountManager currentAccount={ this.props.account } open={ managerIsOpen } />
         </div>
-
       </div>
     )
   }
